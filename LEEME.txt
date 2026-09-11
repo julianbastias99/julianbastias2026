@@ -1,0 +1,26 @@
+PORTFOLIO DE JULIÁN — HTML, CSS Y JAVASCRIPT
+
+No usa React ni necesita instalación.
+
+CÓMO USARLO
+1. Conservá tu carpeta "img" exactamente como está.
+2. Copiá index.html, styles.css y script.js a la carpeta principal de tu portfolio.
+3. Abrí index.html con Chrome, Edge o Firefox.
+
+RUTAS YA CONFIGURADAS
+- img/eco360/post1/Instagram post - 185 a 190  → Hotelga
+- img/eco360/post2/Instagram post - 90 a 95   → Contenido general
+- img/eco360/post3/Instagram post - 204 y 205 → Hotelga
+- img/eco360/post4/Instagram post - 96, 97, 98, 100 y 140 → Contenido general
+- img/eco360/video/WhatsApp Video 2026-08-18 at 09.25.12 → Hotelga
+
+El código prueba automáticamente extensiones PNG, JPG, JPEG, WEBP y AVIF.
+Para el video prueba MP4, WEBM y MOV. No hace falta escribir las extensiones en el código.
+
+FALTA COMPLETAR MÁS ADELANTE
+- Trabajos y video de FOLLOW dentro de img/follow/
+- Tu foto como img/julian-foto.jpg o .png
+- Tu email y el enlace de LinkedIn al final de index.html
+
+IMPORTANTE
+No cambies los nombres de los archivos ni las carpetas de ECO360. Los espacios en los nombres funcionan correctamente.

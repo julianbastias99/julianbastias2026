@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Julián Bastías — Diseñador gráfico</title>
+  <meta
+    name="description"
+    content="Portfolio de Julián Bastías. Diseño gráfico, contenido para redes, edición de video y diseño web."
+  >
+  <meta name="theme-color" content="#17191b">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#proyectos">Saltar a los proyectos</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="signature" href="#inicio" aria-label="Julián Bastías, inicio">
+        <span class="signature-mark">jb.</span>
+        <span class="signature-label">Diseño & contenido</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#eco360">ECO360</a>
+        <a href="#follow">FOLLOW</a>
+        <a href="#cima">CIMA AI</a>
+        <a class="about-nav" href="#sobre-mi">Sobre mí</a>
+        <a class="nav-contact" href="#contacto">Hablemos <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero-background" id="inicio">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow hero-enter" style="--delay: 0ms">
+            Portfolio / Diseñador gráfico
+          </p>
+
+          <h1 id="hero-title" class="hero-enter" style="--delay: 90ms">
+            Julián<br>
+            <span>Bastías.</span>
+          </h1>
+
+          <p class="hero-description hero-enter" style="--delay: 180ms">
+            Diseño contenido, piezas visuales y sitios web
+            con una idea clara detrás y personalidad propia.
+          </p>
+
+          <div class="hero-actions hero-enter" style="--delay: 270ms">
+            <a class="button-lime" href="#proyectos">
+              Ver proyectos <span aria-hidden="true">↗</span>
+            </a>
+            <a class="hero-secondary" href="#sobre-mi">
+              Un poco sobre mí
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-showcase hero-enter" style="--delay: 330ms">
+          <div class="showcase-heading">
+            <span>Una muestra de lo que hago</span>
+            <span class="asterisk" aria-hidden="true">✳</span>
+          </div>
+
+          <div class="hero-selection">
+            <a class="hero-piece hero-piece-eco" href="#eco360">
+              <img
+                src="img/eco360/post1/Instagram post - 185.png"
+                width="1080"
+                height="1350"
+                alt="Diseño de contenido para ECO360"
+                fetchpriority="high"
+              >
+              <span>ECO360 <span aria-hidden="true">↗</span></span>
+            </a>
+
+            <a class="hero-piece hero-piece-follow" href="#follow">
+              <img
+                src="img/follow/post 1/Instagram post - 47.png"
+                width="1080"
+                height="1350"
+                alt="Diseño de contenido para FOLLOW"
+              >
+              <span>FOLLOW <span aria-hidden="true">↗</span></span>
+            </a>
+
+            <a class="hero-piece hero-piece-cima" href="#cima">
+              <img
+                src="img/CIMA AI/post 1/Instagram post - 1.png"
+                width="1080"
+                height="1350"
+                alt="Diseño de contenido para CIMA AI"
+              >
+              <span>CIMA AI <span aria-hidden="true">↗</span></span>
+            </a>
+          </div>
+
+          <p class="showcase-caption">
+            Ideas, campañas y contenido que llevan mi trabajo.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="discipline-strip">
+      <div class="container">
+        <span>Diseño gráfico</span>
+        <span class="strip-star" aria-hidden="true">✳</span>
+        <span>Contenido digital</span>
+        <span class="strip-star" aria-hidden="true">✳</span>
+        <span>Edición de video</span>
+        <span class="strip-star" aria-hidden="true">✳</span>
+        <span>Diseño web</span>
+      </div>
+    </div>
+
+    <section class="projects container" id="proyectos">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Selección de trabajos</p>
+          <h2>Distintas marcas.<br>Mi forma de diseñar.</h2>
+        </div>
+        <p>
+          Una selección de campañas y contenido.
+          Abrí cada publicación para ver sus piezas completas.
+        </p>
+      </div>
+
+      <div id="project-list"></div>
+
+      <noscript>
+        Activá JavaScript para ver las galerías de proyectos.
+      </noscript>
+    </section>
+
+    <section class="about container" id="sobre-mi" aria-labelledby="about-title">
+      <div class="about-visual reveal">
+        <div class="portrait-frame">
+          <!--
+            TU FOTO:
+            Guardala como img/julian.jpg.
+            Si usás otro nombre, cambiá data-photo.
+            La foto se muestra completa, sin recortarla.
+          -->
+          <img
+  id="portrait"
+  data-photo="img/julian.jpeg.jpeg"
+  alt="Julián Bastías"
+  hidden
+>
+
+          <div class="portrait-placeholder" id="portrait-placeholder" aria-hidden="true">
+            <span>jb.</span>
+            <span class="portrait-star">✳</span>
+          </div>
+
+          <span class="portrait-label">Julián Bastías / Diseñador</span>
+        </div>
+      </div>
+
+      <div class="about-copy reveal">
+        <p class="eyebrow">Un poco sobre mí</p>
+        <h2 id="about-title">Diseñar es<br><span>lo que disfruto.</span></h2>
+
+        <p class="about-intro">
+          Soy Julián, diseñador gráfico, y disfruto mucho lo que hago.
+        </p>
+
+        <p>
+          Me gusta buscar una buena idea, probar caminos y encontrar
+          la forma de que cada marca se exprese a su manera.
+          Trabajo con compromiso, atención al detalle y respeto
+          por los tiempos acordados.
+        </p>
+
+        <div class="work-note">
+          <span class="note-label">Mi manera de trabajar</span>
+          <p>
+            Me involucro desde el concepto hasta la pieza final.
+            Cuido los detalles y cumplo con lo que acordamos.
+          </p>
+        </div>
+
+        <div class="toolbox">
+          <p class="eyebrow">Herramientas que uso</p>
+          <ul class="tool-list" aria-label="Herramientas de diseño">
+            <li>Illustrator</li>
+            <li>Photoshop</li>
+            <li>Figma</li>
+            <li>CapCut</li>
+            <li>HTML / CSS / JS</li>
+            <li>WordPress</li>
+            <li>GoHighLevel</li>
+            <li>IA</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="contact-background" id="contacto">
+    <div class="contact container">
+      <div class="contact-heading reveal">
+        <p class="eyebrow">¿Tenés un proyecto en mente?</p>
+        <h2>Hagamos<br><span>algo bueno.</span></h2>
+        <p>Contame qué necesitás. Me gustaría conocer tu idea.</p>
+      </div>
+
+      <div class="contact-links reveal">
+        <a class="contact-card" href="mailto:juliantadeobastias@gmail.com">
+          <span class="contact-icon">
+            <img
+              src="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/icons/mail.svg"
+              alt="" width="24" height="24" loading="lazy"
+            >
+          </span>
+          <span class="contact-card-copy">
+            <small>Email</small>
+            <strong>juliantadeobastias@gmail.com</strong>
+          </span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          class="contact-card"
+          href="https://www.instagram.com/julianbastias/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="contact-icon">
+            <img
+              src="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/icons/instagram.svg"
+              alt="" width="24" height="24" loading="lazy"
+            >
+          </span>
+          <span class="contact-card-copy">
+            <small>Instagram</small>
+            <strong>@julianbastias</strong>
+          </span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          class="contact-card"
+          href="https://www.linkedin.com/in/julianbastias/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="contact-icon">
+            <img
+              src="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/icons/linkedin.svg"
+              alt="" width="24" height="24" loading="lazy"
+            >
+          </span>
+          <span class="contact-card-copy">
+            <small>LinkedIn</small>
+            <strong>Julián Bastías</strong>
+          </span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Julián Bastías · Diseño & contenido</span>
+        <a href="#inicio">Volver arriba ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+    <div class="viewer-toolbar">
+      <span id="viewer-brand-name"></span>
+      <button
+        class="close-button"
+        id="close-viewer"
+        type="button"
+        aria-label="Cerrar publicación"
+        autofocus
+      >✕</button>
+    </div>
+
+    <div class="viewer-layout">
+      <div class="viewer-left">
+        <div class="stage" id="stage"></div>
+
+        <div class="slide-controls">
+          <button id="previous-slide" type="button" aria-label="Pieza anterior">←</button>
+          <span id="slide-counter" aria-live="polite"></span>
+          <button id="next-slide" type="button" aria-label="Pieza siguiente">→</button>
+        </div>
+      </div>
+
+      <aside class="viewer-info">
+        <div class="viewer-account">
+          <div class="logo-wrap small" id="viewer-logo-wrap">
+            <img id="viewer-logo" alt="">
+          </div>
+          <div>
+            <strong id="viewer-account-name"></strong>
+            <span>Diseño por Julián Bastías</span>
+          </div>
+        </div>
+
+        <div class="viewer-description">
+          <p class="eyebrow" id="viewer-category"></p>
+          <h2 id="viewer-title"></h2>
+          <p id="viewer-description"></p>
+
+          <div class="project-role">
+            <span>Mi trabajo</span>
+            <p id="viewer-role"></p>
+          </div>
+        </div>
+
+        <div class="viewer-bottom">
+          <div class="slide-dots" id="slide-dots" aria-label="Elegir pieza"></div>
+          <p class="format-label" id="format-label"></p>
+          <a
+            class="original-link"
+            id="original-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Abrir archivo original ↗</a>
+        </div>
+      </aside>
+    </div>
+  </dialog>
+</body>
+</html>
