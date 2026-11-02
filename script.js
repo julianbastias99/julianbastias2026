@@ -387,46 +387,76 @@ async function exists(path) {
   }
 }
 
+
 async function locateWebShots() {
-  let names = [];
+  const repo =
+    'https://api.github.com/repos/julianbastias99/julianbastias2026/contents/img/webs?ref=main';
+
+  const captureNumbers = {
+    eco360: '087',
+    follow: '085',
+    cima: '086'
+  };
 
   try {
-    const response = await fetch('img/webs/');
+    const response = await fetch(repo, {
+      headers: {
+        Accept: 'application/vnd.github+json'
+      },
+      cache: 'no-store'
+    });
 
-    if (
-      response.ok &&
-      /text\/html/.test(
-        response.headers.get('content-type') || ''
-      )
-    ) {
-      const html = await response.text();
-      const doc = new DOMParser().parseFromString(
-        html,
-        'text/html'
+    if (!response.ok) {
+      throw new Error(
+        `No se pudo consultar GitHub: ${response.status}`
+      );
+    }
+
+    const files = await response.json();
+
+    if (!Array.isArray(files)) {
+      throw new Error('La respuesta no contiene archivos');
+    }
+
+    for (const project of PROJECTS) {
+      const number = captureNumbers[project.key];
+
+      const match = files.find(file =>
+        file.type === 'file' &&
+        file.name.toLowerCase().includes('fireshot') &&
+        new RegExp(
+          `Capture\\s+${number}(?!\\d)`,
+          'i'
+        ).test(file.name) &&
+        /\.(png|jpe?g|webp)$/i.test(file.name)
       );
 
-      names = [...doc.querySelectorAll('a[href]')]
-        .map(a => ({
-          name: decodeURIComponent(
-            (a.getAttribute('href') || '')
-              .split('/').pop().split('?')[0]
-          ),
-          href: a.href
-        }))
-        .filter(f => /\.(png|jpe?g|webp)$/i.test(f.name));
+      if (match) {
+        project.shot =
+          './' +
+          match.path
+            .split('/')
+            .map(encodeURIComponent)
+            .join('/');
+
+        console.log(
+          `${project.name}: captura encontrada`,
+          project.shot
+        );
+      } else {
+        console.warn(
+          `No se encontró la captura ${number} de ${project.name}`
+        );
+      }
     }
-  } catch {}
-
-  for (const project of PROJECTS) {
-    if (await exists(project.shot)) continue;
-
-    const found = names.find(f =>
-      project.fireShot.test(f.name)
+  } catch (error) {
+    console.error(
+      'Error al localizar las capturas web:',
+      error
     );
-
-    if (found) project.shot = found.href;
   }
 }
+
 
 /* IMÁGENES REALES Y VALIDACIÓN */
 
