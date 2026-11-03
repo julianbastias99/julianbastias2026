@@ -214,3 +214,253 @@ body[data-theme="dark"]::before {
     animation: none;
   }
 }
+
+
+/* =========================================
+   JB — VISOR RESPONSIVE DEFINITIVO
+   Publicaciones + videos sin recortes
+   ========================================= */
+
+dialog#work-dialog {
+  position: fixed;
+  inset: 0;
+
+  box-sizing: border-box;
+  width: min(1320px, calc(100vw - 24px));
+  height: min(850px, calc(100dvh - 24px));
+
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+
+  border: 0;
+  background: #18201c;
+  color: #f5f2e9;
+  overflow: hidden;
+}
+
+dialog#work-dialog:not([open]) {
+  display: none !important;
+}
+
+dialog#work-dialog[open] {
+  display: grid !important;
+  grid-template-rows: 58px minmax(0, 1fr);
+}
+
+dialog#work-dialog::backdrop {
+  background: rgba(5, 10, 9, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+/* BARRA SUPERIOR */
+
+dialog#work-dialog .modal-top {
+  height: 58px;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background: #202924;
+  color: white;
+  border-bottom: 1px solid #ffffff25;
+}
+
+dialog#work-dialog #work-close {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid #ffffff55;
+  color: white;
+  cursor: pointer;
+}
+
+dialog#work-dialog #work-close:hover {
+  background: #d7ff45;
+  color: #111715;
+}
+
+/* DISTRIBUCIÓN DEL VISOR */
+
+dialog#work-dialog .work-modal-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(260px, 320px);
+
+  width: 100%;
+  height: 100% !important;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* IMÁGENES Y VIDEOS COMPLETOS */
+
+dialog#work-dialog .work-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100% !important;
+  max-height: none !important;
+
+  min-width: 0 !important;
+  min-height: 0 !important;
+
+  padding: 16px;
+  overflow: hidden;
+  background: #101715;
+}
+
+dialog#work-dialog .work-stage > img,
+dialog#work-dialog .work-stage > video {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  max-width: 100% !important;
+  max-height: 100% !important;
+
+  min-width: 0;
+  min-height: 0;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+/* El video muestra todos los controles */
+
+dialog#work-dialog .work-stage > video {
+  background: #000;
+}
+
+/* PANEL DE INFORMACIÓN */
+
+dialog#work-dialog .work-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  min-width: 0;
+  min-height: 0;
+
+  padding: 25px;
+  overflow-y: auto;
+
+  background: #202924;
+  border-left: 1px solid #ffffff20;
+  color: white;
+}
+
+dialog#work-dialog .work-sidebar h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  color: white;
+}
+
+dialog#work-dialog .work-sidebar p {
+  color: #b6c5bd;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+dialog#work-dialog .work-sidebar > small {
+  color: #fa5145;
+}
+
+/* FLECHAS */
+
+dialog#work-dialog .work-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+dialog#work-dialog .work-nav button {
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid #ffffff50;
+  border-radius: 50%;
+
+  background: transparent;
+  color: white;
+}
+
+dialog#work-dialog .work-nav button:hover:not(:disabled) {
+  background: #d7ff45;
+  color: #111715;
+}
+
+dialog#work-dialog #work-source {
+  align-self: flex-start;
+  color: white;
+  border-bottom: 1px solid #ffffff90;
+  padding-bottom: 5px;
+  font-size: 11px;
+}
+
+/* CELULARES */
+
+@media (max-width: 700px) {
+  dialog#work-dialog {
+    width: calc(100vw - 10px);
+    height: calc(100dvh - 10px);
+  }
+
+  dialog#work-dialog[open] {
+    grid-template-rows: 50px minmax(0, 1fr);
+  }
+
+  dialog#work-dialog .modal-top {
+    height: 50px;
+    padding: 8px 12px;
+  }
+
+  dialog#work-dialog .work-modal-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  dialog#work-dialog .work-stage {
+    padding: 8px;
+  }
+
+  dialog#work-dialog .work-sidebar {
+    max-height: 160px;
+    padding: 12px;
+    gap: 8px;
+    border-left: 0;
+    border-top: 1px solid #ffffff20;
+  }
+
+  dialog#work-dialog .work-sidebar h2 {
+    font-size: 17px;
+  }
+
+  dialog#work-dialog .work-sidebar p {
+    display: none;
+  }
+
+  dialog#work-dialog .work-nav {
+    padding-top: 5px;
+  }
+
+  dialog#work-dialog .work-nav button {
+    width: 34px;
+    height: 34px;
+  }
+}
