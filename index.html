@@ -8,15 +8,34 @@
   <meta name="description" content="Julián Bastías — portfolio de diseño gráfico, diseño y desarrollo web, comunicación digital y piezas impresas.">
   <title>Julián Bastías® — Diseñador gráfico y digital</title>
 
+  <!-- NUEVO LOGO / FAVICON -->
+  <link rel="icon" type="image/png" href="./img/logo%20mio.png?v=1">
+  <link rel="apple-touch-icon" href="./img/logo%20mio.png?v=1">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="./styles.css?v=visor4">
+  <link rel="stylesheet" href="./styles.css?v=visor4">
+
   <style>
-    /* ==========================================
-       HERO / TIPOGRAFÍA
-       ========================================== */
+    /* NUEVO LOGO EN EL HEADER */
+
+    .signature .monogram {
+      background: transparent !important;
+      animation: none !important;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .signature .brand-logo-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* HERO / TIPOGRAFÍA */
 
     .hero-layout > * {
       min-width: 0;
@@ -73,9 +92,7 @@
       text-shadow: 1px 0 #a2b7ff66;
     }
 
-    /* ==========================================
-       HOVERS / NAVEGACIÓN
-       ========================================== */
+    /* HOVERS / NAVEGACIÓN */
 
     .nav a {
       transition:
@@ -88,9 +105,7 @@
       letter-spacing: .085em;
     }
 
-    /* ==========================================
-       HOVERS / BOTONES
-       ========================================== */
+    /* HOVERS / BOTONES */
 
     .button-acid {
       position: relative;
@@ -127,9 +142,7 @@
       transform: translate(4px,-3px);
     }
 
-    /* ==========================================
-       HOVERS / TRABAJOS GRÁFICOS
-       ========================================== */
+    /* HOVERS / TRABAJOS GRÁFICOS */
 
     .graphic-image-box {
       transition:
@@ -171,9 +184,7 @@
       color: var(--coral);
     }
 
-    /* ==========================================
-       HOVERS / PROYECTOS WEB Y LOGOS
-       ========================================== */
+    /* HOVERS / PROYECTOS WEB Y LOGOS */
 
     .brand-logo,
     .site-window {
@@ -192,9 +203,7 @@
       box-shadow: 16px 17px 0 #13201b24;
     }
 
-    /* ==========================================
-       FOTO PERSONAL / COMPOSICIÓN
-       ========================================== */
+    /* FOTO PERSONAL / COMPOSICIÓN */
 
     .photo-main {
       transition:
@@ -216,9 +225,7 @@
       transform: scale(1.03);
     }
 
-    /* ==========================================
-       RESPONSIVE
-       ========================================== */
+    /* RESPONSIVE */
 
     @media (max-width:1140px) and (min-width:871px) {
       .hero-heading {
@@ -275,7 +282,8 @@
     }
   </style>
 
-<script src="./script.js?v=20261102-fix2" defer></script></head>
+  <script src="./script.js?v=20261102-fix2" defer></script>
+</head>
 
 <body data-theme="light">
 
@@ -299,9 +307,14 @@
         href="#inicio"
         aria-label="Julián Bastías, inicio">
 
+        <!-- NUEVO LOGO -->
         <span class="monogram" aria-hidden="true">
-          <span class="monogram-glyph">jb</span>
-          <span class="monogram-plus">+</span>
+          <img
+            class="brand-logo-image"
+            src="./img/logo%20mio.png"
+            alt=""
+            width="54"
+            height="54">
         </span>
 
         <span class="signature-name">
@@ -395,9 +408,9 @@
 
           <h1 class="hero-heading">
             <span data-i18n="heroOne">IDEAS QUE</span>
-            <span class="hero-underlined" data-i18n="heroTwo">
-              SE VEN.
-            </span>
+            <span
+              class="hero-underlined"
+              data-i18n="heroTwo">SE VEN.</span>
             <em data-i18n="heroThree">
               Diseño que funciona.
             </em>
@@ -468,12 +481,16 @@
                 src="img/eco360/post1/Instagram post - 185.png"
                 alt="Publicación de ECO360">
 
-              <span class="featured-open" aria-hidden="true">
+              <span
+                class="featured-open"
+                aria-hidden="true">
                 VER ↗
               </span>
             </button>
 
-            <span class="stack-mark" aria-hidden="true">
+            <span
+              class="stack-mark"
+              aria-hidden="true">
               ✳
             </span>
 
@@ -493,6 +510,7 @@
                 id="spot-prev"
                 type="button"
                 aria-label="Anterior">←</button>
+
               <button
                 id="spot-next"
                 type="button"
@@ -564,7 +582,9 @@
 
         <div class="section-intro reveal">
 
-          <span class="section-index">02 / ABOUT ME</span>
+          <span class="section-index">
+            02 / ABOUT ME
+          </span>
 
           <div>
             <h2 data-html="aboutTitle">
@@ -580,6 +600,7 @@
           <div class="photos-composition reveal">
 
             <!-- RETRATO PRINCIPAL -->
+
             <figure class="photo-main">
 
               <img
@@ -592,6 +613,7 @@
             </figure>
 
             <!-- FOTO CON GATOS -->
+
             <figure class="photo-cats">
 
               <img
@@ -604,6 +626,7 @@
             </figure>
 
             <!-- FOTO NOCTURNA -->
+
             <figure class="photo-night">
 
               <img
@@ -621,7 +644,9 @@
 
           <div class="about-text reveal">
 
-            <p class="about-statement" data-i18n="aboutStatement">
+            <p
+              class="about-statement"
+              data-i18n="aboutStatement">
               Soy Julián, diseñador gráfico y digital.
               Me gusta llevar una idea desde el primer boceto
               hasta verla funcionando, ya sea en una etiqueta,
@@ -710,14 +735,16 @@
 
       <div class="footer-links">
 
-        <a href="mailto:juliantadeobastias@gmail.com"
-           data-i18n="email">
+        <a
+          href="mailto:juliantadeobastias@gmail.com"
+          data-i18n="email">
           EMAIL ↗
         </a>
 
-        <a href="https://www.linkedin.com/in/julianbastias/"
-           target="_blank"
-           rel="noopener noreferrer">
+        <a
+          href="https://www.linkedin.com/in/julianbastias/"
+          target="_blank"
+          rel="noopener noreferrer">
           LINKEDIN ↗
         </a>
 
@@ -744,6 +771,7 @@
     aria-labelledby="web-dialog-title">
 
     <div class="modal-top">
+
       <strong id="web-dialog-title">WEB</strong>
 
       <div class="modal-top-actions">
@@ -775,7 +803,9 @@
       </div>
     </div>
 
-    <div class="web-full-scroll" id="web-full-scroll">
+    <div
+      class="web-full-scroll"
+      id="web-full-scroll">
 
       <img
         id="web-full"
@@ -793,7 +823,7 @@
 
   </dialog>
 
-  <!-- VISOR DE PUBLICACIONES -->
+  <!-- VISOR DE PUBLICACIONES Y VIDEOS -->
 
   <dialog
     id="work-dialog"
@@ -817,7 +847,10 @@
 
     <div class="work-modal-grid">
 
-      <div class="work-stage" id="work-stage"></div>
+      <div
+        class="work-stage"
+        id="work-stage">
+      </div>
 
       <aside class="work-sidebar">
 
@@ -836,7 +869,9 @@
             ←
           </button>
 
-          <span id="work-count">01 / 01</span>
+          <span id="work-count">
+            01 / 01
+          </span>
 
           <button
             id="work-next"
@@ -856,11 +891,12 @@
         </a>
 
       </aside>
+
     </div>
 
   </dialog>
 
-  <!-- ANIMACIONES Y CORRECCIÓN DE FOTO -->
+  <!-- ANIMACIÓN DE LETRAS Y CORRECCIÓN DE FOTO -->
 
   <script>
     (() => {
@@ -905,9 +941,7 @@
             const image = new Image();
 
             image.onload = () => resolve(true);
-
             image.onerror = () => resolve(false);
-
             image.src = url;
 
           });
@@ -916,18 +950,16 @@
             portrait.src = url;
             return;
           }
-
         }
 
         portrait.hidden = true;
 
         console.warn(
-          'No encontré la foto principal en img/. Revisá julian.jpeg.jpeg.'
+          'No encontré la foto principal en img/.'
         );
-
       }
 
-      /* ANIMACIÓN DE LETRAS Y SÍMBOLOS */
+      /* ANIMACIÓN DE CARACTERES */
 
       function scramble(element, options = {}) {
 
@@ -964,7 +996,6 @@
         element.classList.add('scramble-live');
 
         const started = performance.now() + delay;
-
         const id = Symbol();
 
         element._scrambleId = id;
@@ -996,7 +1027,6 @@
               return symbols[
                 Math.floor(Math.random() * symbols.length)
               ];
-
             }
           ).join('');
 
@@ -1010,27 +1040,20 @@
           } else {
 
             element.textContent = text;
-
-            element.classList.remove(
-              'scramble-live'
-            );
-
+            element.classList.remove('scramble-live');
             element.style.minHeight = '';
 
             pending.delete(element);
-
           }
-
         }
 
         pending.set(
           element,
           requestAnimationFrame(draw)
         );
-
       }
 
-      /* ANIMACIÓN DE ENTRADA DEL TÍTULO */
+      /* ANIMACIÓN DEL TÍTULO */
 
       function animateHeading(refreshText = false) {
 
@@ -1057,9 +1080,7 @@
               line.dataset.scrambleTarget =
                 line.textContent;
             }
-
           });
-
         }
 
         title.setAttribute(
@@ -1078,9 +1099,7 @@
             duration: i === 2 ? 1000 : 750,
             delay: i * 210
           });
-
         });
-
       }
 
       /* INTERACCIONES */
@@ -1114,7 +1133,6 @@
             lastHover = Date.now();
 
             animateHeading();
-
           });
 
         document.querySelectorAll('.nav a')
@@ -1129,10 +1147,8 @@
                     duration: 340
                   });
                 }
-
               }
             );
-
           });
 
         document.getElementById('lang-btn')
@@ -1140,6 +1156,7 @@
 
             document.querySelectorAll('.nav a')
               .forEach(link => {
+
                 link.dataset.scrambleTarget =
                   link.textContent;
               });
@@ -1147,9 +1164,7 @@
             requestAnimationFrame(
               () => animateHeading(true)
             );
-
           });
-
       }
 
       document.addEventListener(
