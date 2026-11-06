@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="es">
 <head>
@@ -9,280 +8,17 @@
   <title>Julián Bastías® — Diseñador gráfico y digital</title>
 
   <!-- NUEVO LOGO / FAVICON -->
-  <link rel="icon" type="image/png" href="./img/logo%20mio.png?v=1">
-  <link rel="apple-touch-icon" href="./img/logo%20mio.png?v=1">
+  <link rel="icon" type="image/png" href="./img/logo%20mio.png?v=17">
+  <link rel="apple-touch-icon" href="./img/logo%20mio.png?v=17">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./styles.css?v=visor4">
+  <link rel="stylesheet" href="./styles.css?v=20261106-v17">
 
-  <style>
-    /* NUEVO LOGO EN EL HEADER */
 
-    .signature .monogram {
-      background: transparent !important;
-      animation: none !important;
-      overflow: hidden;
-      padding: 0;
-    }
-
-    .signature .brand-logo-image {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* HERO / TIPOGRAFÍA */
-
-    .hero-layout > * {
-      min-width: 0;
-    }
-
-    .hero-heading {
-      max-width: 100%;
-      font-size: clamp(60px, 6.25vw, 97px);
-      line-height: .96;
-      overflow-wrap: normal;
-    }
-
-    .hero-heading > span {
-      max-width: 100%;
-    }
-
-    .hero-heading em {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      margin-top: 12px;
-      font-size: clamp(52px, 4.9vw, 72px);
-      line-height: 1.06;
-      white-space: normal;
-      text-wrap: balance;
-      overflow-wrap: normal;
-      transition: color .3s;
-    }
-
-    .hero-heading .hero-underlined {
-      transition:
-        color .3s,
-        transform .35s cubic-bezier(.22,1,.36,1);
-    }
-
-    .hero-heading:hover .hero-underlined {
-      color: var(--coral);
-      transform: translateX(4px);
-    }
-
-    .hero-heading .hero-underlined:after {
-      transition: height .3s;
-    }
-
-    .hero-heading:hover .hero-underlined:after {
-      height: 8px;
-    }
-
-    .hero-heading:hover em {
-      color: var(--electric);
-    }
-
-    .hero-heading .scramble-live {
-      text-shadow: 1px 0 #a2b7ff66;
-    }
-
-    /* HOVERS / NAVEGACIÓN */
-
-    .nav a {
-      transition:
-        color .25s,
-        letter-spacing .25s;
-    }
-
-    .nav a:hover {
-      color: var(--acid);
-      letter-spacing: .085em;
-    }
-
-    /* HOVERS / BOTONES */
-
-    .button-acid {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .button-acid::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--coral);
-      z-index: -1;
-      transform: translateX(-102%);
-      transition:
-        transform .38s cubic-bezier(.22,1,.36,1);
-    }
-
-    .button-acid:hover {
-      background: var(--acid);
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    .button-acid:hover::before {
-      transform: translateX(0);
-    }
-
-    .button-acid span:last-child {
-      transition: transform .25s;
-    }
-
-    .button-acid:hover span:last-child {
-      transform: translate(4px,-3px);
-    }
-
-    /* HOVERS / TRABAJOS GRÁFICOS */
-
-    .graphic-image-box {
-      transition:
-        box-shadow .4s,
-        border-color .4s;
-    }
-
-    .graphic-image-box::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background: linear-gradient(
-        115deg,
-        transparent 30%,
-        #ffffff4a 50%,
-        transparent 70%
-      );
-      transform: translateX(-125%);
-      transition:
-        transform .65s cubic-bezier(.22,1,.36,1);
-    }
-
-    .graphic-figure:hover .graphic-image-box {
-      border-color: var(--ink);
-      box-shadow: 9px 11px 0 var(--rule);
-    }
-
-    .graphic-figure:hover .graphic-image-box::after {
-      transform: translateX(125%);
-    }
-
-    .graphic-caption strong {
-      transition: color .2s;
-    }
-
-    .graphic-figure:hover .graphic-caption strong {
-      color: var(--coral);
-    }
-
-    /* HOVERS / PROYECTOS WEB Y LOGOS */
-
-    .brand-logo,
-    .site-window {
-      transition:
-        transform .4s,
-        box-shadow .4s;
-    }
-
-    .project-head:hover .brand-logo {
-      transform: rotate(-4deg) translateY(-4px);
-      box-shadow: 6px 7px 0 var(--rule);
-    }
-
-    .site-visual:hover .site-window {
-      transform: translateY(-5px);
-      box-shadow: 16px 17px 0 #13201b24;
-    }
-
-    /* FOTO PERSONAL / COMPOSICIÓN */
-
-    .photo-main {
-      transition:
-        transform .4s,
-        box-shadow .4s;
-    }
-
-    .photo-main img {
-      object-position: center 32%;
-      transition: transform .55s;
-    }
-
-    .photo-main:hover {
-      transform: rotate(0deg) translateY(-7px);
-      box-shadow: 14px 18px 0 var(--electric);
-    }
-
-    .photo-main:hover img {
-      transform: scale(1.03);
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width:1140px) and (min-width:871px) {
-      .hero-heading {
-        font-size: 6.2vw;
-      }
-
-      .hero-heading em {
-        font-size: 4.85vw;
-      }
-    }
-
-    @media (max-width:870px) {
-      .hero-heading {
-        font-size: clamp(64px,10vw,105px);
-      }
-
-      .hero-heading em {
-        font-size: clamp(53px,7.6vw,82px);
-      }
-    }
-
-    @media (max-width:700px) {
-      .hero-heading {
-        font-size: clamp(49px,11.4vw,79px);
-      }
-
-      .hero-heading em {
-        font-size: clamp(44px,8.9vw,68px);
-        text-wrap: balance;
-      }
-
-      .graphic-figure:hover .graphic-image-box {
-        box-shadow: 5px 6px 0 var(--rule);
-      }
-    }
-
-    @media (max-width:390px) {
-      .hero-heading {
-        font-size: 11.7vw;
-      }
-
-      .hero-heading em {
-        font-size: 9.5vw;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-heading:hover .hero-underlined,
-      .photo-main:hover,
-      .site-visual:hover .site-window,
-      .project-head:hover .brand-logo {
-        transform: none;
-      }
-    }
-  </style>
-
-  <script src="./script.js?v=20261102-fix2" defer></script>
+  <script src="./script.js?v=20261106-v17" defer></script>
 </head>
 
 <body data-theme="light">
@@ -333,6 +69,8 @@
         <a href="#proyectos" data-i18n="navProjects">
           PROYECTOS
         </a>
+
+        <a href="#video" data-i18n="navVideo">VIDEO</a>
 
         <a href="#sobre-mi" data-i18n="navAbout">
           SOBRE MÍ
@@ -575,6 +313,41 @@
       </div>
     </section>
 
+
+
+    <!-- AUDIOVISUAL / Los videos ya no quedan escondidos al final de las marcas -->
+    <section id="video" class="motion-section" aria-labelledby="motion-title">
+      <div class="wrap">
+        <div class="motion-intro">
+          <span class="motion-index" data-i18n="motionIndex">02 / AUDIOVISUAL</span>
+          <div class="motion-intro-copy">
+            <h2 id="motion-title" data-html="motionTitle">DISEÑO EN<br><em>MOVIMIENTO.</em></h2>
+            <p data-i18n="motionDescription">Edición, ritmo y exploraciones audiovisuales realizadas para ECO360 y CIMA AI.</p>
+          </div>
+          <span class="motion-count" data-i18n="motionCount">03 PIEZAS SELECCIONADAS</span>
+        </div>
+        <div class="motion-grid" id="motion-grid"></div>
+        <div class="motion-bottomline">
+          <span>JB® / 2026 — AUDIOVISUAL</span>
+          <span data-i18n="motionInstruction">PASÁ EL MOUSE PARA PREVISUALIZAR · CLIC PARA VER COMPLETO</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- LABORATORIO VISUAL: se activa solo cuando agregues trabajos propios. -->
+    <section class="visual-lab" id="laboratorio" hidden aria-labelledby="lab-title">
+      <div class="wrap">
+        <div class="lab-intro">
+          <span class="lab-index" data-i18n="labIndex">05 / PROYECTOS PERSONALES</span>
+          <div>
+            <h2 id="lab-title" data-html="labTitle">LABORATORIO<br><em>VISUAL.</em></h2>
+            <p data-i18n="labDesc">Pósters, branding y exploraciones visuales.</p>
+          </div>
+        </div>
+        <div class="lab-grid" id="lab-grid"></div>
+      </div>
+    </section>
+
     <!-- SOBRE MÍ -->
 
     <section id="sobre-mi" class="about-section">
@@ -583,7 +356,7 @@
         <div class="section-intro reveal">
 
           <span class="section-index">
-            02 / ABOUT ME
+            03 / ABOUT ME
           </span>
 
           <div>
@@ -722,7 +495,7 @@
     <div class="wrap">
 
       <div class="footer-meta">
-        <span>03 / CONTACTO</span>
+        <span>04 / CONTACTO</span>
         <span data-i18n="availability">
           ABIERTO A NUEVAS OPORTUNIDADES
         </span>
@@ -898,282 +671,6 @@
 
   <!-- ANIMACIÓN DE LETRAS Y CORRECCIÓN DE FOTO -->
 
-  <script>
-    (() => {
-      'use strict';
-
-      const prefersLessMotion = matchMedia(
-        '(prefers-reduced-motion: reduce)'
-      );
-
-      const symbols =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&+?✳/';
-
-      const pending = new WeakMap();
-
-      /* FOTO PRINCIPAL */
-
-      async function fixPortrait() {
-
-        const portrait = document.querySelector(
-          '.photo-main img'
-        );
-
-        if (!portrait) return;
-
-        if (
-          portrait.complete &&
-          portrait.naturalWidth > 0
-        ) return;
-
-        const candidates = [
-          'img/julian.jpeg.jpeg',
-          'img/julian.jpeg',
-          'img/julian.jpg',
-          'img/julian.png',
-          'img/julian.webp'
-        ];
-
-        for (const url of candidates) {
-
-          const valid = await new Promise(resolve => {
-
-            const image = new Image();
-
-            image.onload = () => resolve(true);
-            image.onerror = () => resolve(false);
-            image.src = url;
-
-          });
-
-          if (valid) {
-            portrait.src = url;
-            return;
-          }
-        }
-
-        portrait.hidden = true;
-
-        console.warn(
-          'No encontré la foto principal en img/.'
-        );
-      }
-
-      /* ANIMACIÓN DE CARACTERES */
-
-      function scramble(element, options = {}) {
-
-        if (
-          !element ||
-          prefersLessMotion.matches
-        ) return;
-
-        const {
-          duration = 750,
-          delay = 0
-        } = options;
-
-        const previous = pending.get(element);
-
-        if (previous) {
-          cancelAnimationFrame(previous);
-        }
-
-        const text =
-          element.dataset.scrambleTarget ||
-          element.textContent;
-
-        element.dataset.scrambleTarget = text;
-
-        const characters = [...text];
-
-        const minHeight =
-          element.getBoundingClientRect().height;
-
-        element.style.minHeight =
-          `${Math.ceil(minHeight)}px`;
-
-        element.classList.add('scramble-live');
-
-        const started = performance.now() + delay;
-        const id = Symbol();
-
-        element._scrambleId = id;
-
-        function draw(now) {
-
-          if (element._scrambleId !== id) return;
-
-          const progress = Math.min(
-            1,
-            Math.max(0, (now - started) / duration)
-          );
-
-          const settled = Math.floor(
-            characters.length * progress
-          );
-
-          element.textContent = characters.map(
-            (ch, index) => {
-
-              if (
-                /\s/.test(ch) ||
-                index < settled ||
-                progress === 1
-              ) {
-                return ch;
-              }
-
-              return symbols[
-                Math.floor(Math.random() * symbols.length)
-              ];
-            }
-          ).join('');
-
-          if (progress < 1) {
-
-            pending.set(
-              element,
-              requestAnimationFrame(draw)
-            );
-
-          } else {
-
-            element.textContent = text;
-            element.classList.remove('scramble-live');
-            element.style.minHeight = '';
-
-            pending.delete(element);
-          }
-        }
-
-        pending.set(
-          element,
-          requestAnimationFrame(draw)
-        );
-      }
-
-      /* ANIMACIÓN DEL TÍTULO */
-
-      function animateHeading(refreshText = false) {
-
-        const title = document.querySelector(
-          '.hero-heading'
-        );
-
-        if (
-          !title ||
-          prefersLessMotion.matches
-        ) return;
-
-        const lines = [
-          title.querySelector('[data-i18n="heroOne"]'),
-          title.querySelector('[data-i18n="heroTwo"]'),
-          title.querySelector('[data-i18n="heroThree"]')
-        ];
-
-        if (refreshText) {
-
-          lines.forEach(line => {
-
-            if (line) {
-              line.dataset.scrambleTarget =
-                line.textContent;
-            }
-          });
-        }
-
-        title.setAttribute(
-          'aria-label',
-          lines.map(
-            line =>
-              line?.dataset.scrambleTarget ||
-              line?.textContent ||
-              ''
-          ).join(' ')
-        );
-
-        lines.forEach((line, i) => {
-
-          scramble(line, {
-            duration: i === 2 ? 1000 : 750,
-            delay: i * 210
-          });
-        });
-      }
-
-      /* INTERACCIONES */
-
-      function init() {
-
-        fixPortrait();
-
-        const fonts =
-          document.fonts?.ready ||
-          Promise.resolve();
-
-        Promise.race([
-          fonts,
-          new Promise(
-            resolve => setTimeout(resolve, 450)
-          )
-        ]).then(() => animateHeading(true));
-
-        let lastHover = 0;
-
-        document.querySelector('.hero-heading')
-          ?.addEventListener('pointerenter', e => {
-
-            if (e.pointerType !== 'mouse') return;
-
-            if (Date.now() - lastHover < 2800) {
-              return;
-            }
-
-            lastHover = Date.now();
-
-            animateHeading();
-          });
-
-        document.querySelectorAll('.nav a')
-          .forEach(link => {
-
-            link.addEventListener(
-              'pointerenter',
-              e => {
-
-                if (e.pointerType === 'mouse') {
-                  scramble(link, {
-                    duration: 340
-                  });
-                }
-              }
-            );
-          });
-
-        document.getElementById('lang-btn')
-          ?.addEventListener('click', () => {
-
-            document.querySelectorAll('.nav a')
-              .forEach(link => {
-
-                link.dataset.scrambleTarget =
-                  link.textContent;
-              });
-
-            requestAnimationFrame(
-              () => animateHeading(true)
-            );
-          });
-      }
-
-      document.addEventListener(
-        'DOMContentLoaded',
-        init
-      );
-
-    })();
-  </script>
 
 </body>
 </html>

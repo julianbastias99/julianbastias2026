@@ -1,4 +1,3 @@
-
 'use strict';
 
 /* JB V11 — Portfolio completo, sin dependencias de JavaScript.
@@ -200,6 +199,7 @@ const COPY = {
     skip: 'Ir a proyectos',
     position: 'DISEÑADOR GRÁFICO & DIGITAL',
     navProjects: 'PROYECTOS',
+    navVideo: 'VIDEO',
     navAbout: 'SOBRE MÍ',
     navContact: 'CONTACTO',
     place: 'MENDOZA / ARGENTINA — PORTFOLIO 2026',
@@ -236,6 +236,12 @@ const COPY = {
     graphicsHeading: '02 / COMUNICACIÓN VISUAL',
     graphicsDescription: 'PIEZAS VISIBLES / CLIC PARA VER EL CARRUSEL',
     viewSeries: 'VER CARRUSEL ↗',
+    motionIndex: '02 / AUDIOVISUAL',
+    motionTitle: 'DISEÑO EN<br><em>MOVIMIENTO.</em>',
+    motionDescription: 'Edición, ritmo y exploraciones audiovisuales realizadas para ECO360 y CIMA AI.',
+    motionCount: '03 PIEZAS SELECCIONADAS',
+    motionInstruction: 'PASÁ EL MOUSE PARA PREVISUALIZAR · CLIC PARA VER COMPLETO',
+    motionPlay: 'VER VIDEO COMPLETO ↗',
     videoHeading: '03 / VIDEO Y EXPLORACIÓN',
     videoDescription: 'LOOP SILENCIOSO / PASÁ EL MOUSE PARA PAUSAR',
     openVideo: 'VER VIDEO ↗',
@@ -244,12 +250,18 @@ const COPY = {
     galleryType: 'DISEÑO GRÁFICO',
     videoType: 'VIDEO',
     lofiOn: 'LO-FI ON',
+    moreGraphics: 'VER MÁS PIEZAS  +',
+    lessGraphics: 'VER MENOS  −',
+    labIndex: '05 / PROYECTOS PERSONALES',
+    labTitle: 'LABORATORIO<br><em>VISUAL.</em>',
+    labDesc: 'Pósters, branding y exploraciones visuales realizadas por iniciativa propia.',
     lofiOff: 'LO-FI OFF'
   },
   en: {
     skip: 'Skip to projects',
     position: 'GRAPHIC & DIGITAL DESIGNER',
     navProjects: 'PROJECTS',
+    navVideo: 'VIDEO',
     navAbout: 'ABOUT',
     navContact: 'CONTACT',
     place: 'MENDOZA / ARGENTINA — PORTFOLIO 2026',
@@ -286,6 +298,12 @@ const COPY = {
     graphicsHeading: '02 / VISUAL COMMUNICATION',
     graphicsDescription: 'VISIBLE WORK / CLICK TO SEE EACH SERIES',
     viewSeries: 'VIEW SERIES ↗',
+    motionIndex: '02 / VIDEO',
+    motionTitle: 'DESIGN IN<br><em>MOTION.</em>',
+    motionDescription: 'Editing, rhythm and audiovisual experiments created for ECO360 and CIMA AI.',
+    motionCount: '03 SELECTED PIECES',
+    motionInstruction: 'HOVER TO PREVIEW · CLICK TO WATCH IN FULL',
+    motionPlay: 'WATCH FULL VIDEO ↗',
     videoHeading: '03 / VIDEO & EXPERIMENTS',
     videoDescription: 'SILENT LOOP / HOVER TO PAUSE',
     openVideo: 'OPEN VIDEO ↗',
@@ -294,6 +312,11 @@ const COPY = {
     galleryType: 'GRAPHIC DESIGN',
     videoType: 'VIDEO',
     lofiOn: 'LO-FI ON',
+    moreGraphics: 'MORE GRAPHICS  +',
+    lessGraphics: 'SHOW LESS  −',
+    labIndex: '05 / PERSONAL WORK',
+    labTitle: 'VISUAL<br><em>LAB.</em>',
+    labDesc: 'Posters, branding and visual explorations made independently.',
     lofiOff: 'LO-FI OFF'
   }
 };
@@ -690,6 +713,7 @@ function renderProjects() {
 
     project.works.forEach((piece, index) => {
       const tile = node('article', 'graphic-item');
+      if (index >= 3) tile.classList.add('is-extra');
       const btn = node('button', 'graphic-figure');
 
       btn.type = 'button';
@@ -769,122 +793,27 @@ function renderProjects() {
     });
 
     gallery.append(galleryHead, grid);
+    // Tres publicaciones visibles por marca. Las demás siguen accesibles.
+    if (project.works.length > 3) {
+      const toggle = node('button', 'show-more-work', t('moreGraphics'));
+      toggle.type = 'button';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', `${t('moreGraphics')} — ${project.name}`);
+      toggle.addEventListener('click', () => {
+        const expanded = gallery.classList.toggle('is-expanded');
+        toggle.textContent = t(expanded ? 'lessGraphics' : 'moreGraphics');
+        toggle.setAttribute('aria-expanded', String(expanded));
+      });
+      gallery.append(toggle);
+    }
     article.append(gallery);
 
-    /* VIDEO PEQUEÑO DENTRO DEL PROYECTO */
-
-    if (project.videos.length) {
-      const videos = node('div', 'video-area');
-      const header = node('div', 'video-head');
-
-      header.append(
-        node('strong', '', t('videoHeading')),
-        node('small', '', t('videoDescription'))
-      );
-
-      const videoGrid = node('div', 'video-grid');
-
-      project.videos.forEach((item, i) => {
-        const entry = node('article', 'video-item');
-        const frame = node('div', 'video-frame');
-        const vid = node('video');
-
-        vid.muted = true;
-        vid.defaultMuted = true;
-        vid.loop = true;
-        vid.playsInline = true;
-        vid.preload = 'metadata';
-        vid.setAttribute('muted', '');
-        vid.setAttribute('playsinline', '');
-        vid.src = item.file;
-
-        vid.setAttribute(
-          'aria-label',
-          inLang(item.title)
-        );
-
-        vid.addEventListener('loadeddata', () =>
-          frame.classList.add('ready')
-        );
-
-        frame.append(
-          vid,
-          node(
-            'span',
-            'video-placeholder',
-            `${project.name} / 0${i + 1}`
-          )
-        );
-
-        frame.addEventListener(
-          'pointerenter',
-          event => {
-            if (event.pointerType === 'mouse') {
-              vid.dataset.hover = 'true';
-              vid.pause();
-            }
-          }
-        );
-
-        frame.addEventListener('pointerleave', () => {
-          vid.dataset.hover = 'false';
-
-          if (
-            vid.dataset.visible === 'true' &&
-            !document.hidden &&
-            !reduced.matches &&
-            !$('#work-dialog').open
-          ) {
-            vid.play().catch(() => {});
-          }
-        });
-
-        frame.addEventListener('click', () => {
-          if (matchMedia('(hover:none)').matches) {
-            vid.paused
-              ? vid.play().catch(() => {})
-              : vid.pause();
-          }
-        });
-
-        const caption = node('div', 'video-caption');
-        caption.append(
-          node('strong', '', inLang(item.title))
-        );
-
-        const open = node(
-          'button',
-          '',
-          t('openVideo')
-        );
-
-        open.type = 'button';
-        open.addEventListener(
-          'click',
-          () => openWorkViewer(
-            project,
-            {
-              title: item.title,
-              images: [item.file],
-              video: true
-            },
-            open
-          )
-        );
-
-        caption.append(open);
-        entry.append(frame, caption);
-        videoGrid.append(entry);
-      });
-
-      videos.append(header, videoGrid);
-      article.append(videos);
-    }
+    /* Videos agrupados en #video para darles protagonismo. */
 
     root.append(article);
   });
 
-  observeVideos();
+  renderMotionSection();
   fadeInSetup();
 }
 
@@ -933,6 +862,104 @@ document.addEventListener('visibilitychange', () => {
     }
   });
 });
+
+/* ============================================================
+   VIDEO / GALERÍA AUDIOVISUAL
+   Todos los recursos salen de PROJECTS, sin archivos inventados.
+   ============================================================ */
+function renderMotionSection() {
+  const grid = $('#motion-grid');
+  const section = $('#video');
+  if (!grid || !section) return;
+
+  grid.replaceChildren();
+  const entries = PROJECTS.flatMap(project =>
+    project.videos.map(piece => ({ project, piece }))
+  );
+
+  section.hidden = entries.length === 0;
+  if (!entries.length) return;
+
+  entries.forEach(({ project, piece }, index) => {
+    const card = node('article', 'motion-card');
+    const number = node('span', 'motion-number',
+      String(index + 1).padStart(2, '0') + ' / ' +
+      String(entries.length).padStart(2, '0')
+    );
+
+    const preview = node('button', 'motion-preview');
+    preview.type = 'button';
+    preview.setAttribute('aria-label',
+      `${t('motionPlay')}: ${inLang(piece.title)}, ${project.name}`
+    );
+
+    const video = node('video');
+    video.src = piece.file;
+    video.preload = 'metadata';
+    video.playsInline = true;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('aria-hidden', 'true');
+    video.tabIndex = -1;
+    // El primer fotograma de cada archivo actúa como portada real.
+    video.addEventListener('loadeddata', () => {
+      card.classList.add('motion-ready');
+    });
+    video.addEventListener('error', () => {
+      card.classList.add('motion-failed');
+    });
+
+    const overlay = node('span', 'motion-play-indicator', '▶');
+    overlay.setAttribute('aria-hidden', 'true');
+    preview.append(video, overlay, number);
+
+    function startPreview() {
+      if (!reduced.matches && !document.hidden && !$('#work-dialog').open) {
+        video.play().catch(() => {});
+      }
+    }
+    function stopPreview() { video.pause(); }
+
+    preview.addEventListener('pointerenter', e => {
+      if (e.pointerType === 'mouse') startPreview();
+    });
+    preview.addEventListener('pointerleave', stopPreview);
+    preview.addEventListener('focus', startPreview);
+    preview.addEventListener('blur', stopPreview);
+    preview.addEventListener('click', () => {
+      stopPreview();
+      openWorkViewer(project, {
+        title: piece.title,
+        images: [piece.file],
+        video: true
+      }, preview);
+    });
+
+    const caption = node('div', 'motion-caption');
+    const metadata = node('div', 'motion-metadata');
+    metadata.append(
+      node('span', 'motion-brand', project.name),
+      node('span', 'motion-format', 'VIDEO / 2026')
+    );
+    const title = node('h3', '', inLang(piece.title));
+    const footer = node('span', 'motion-action', t('motionPlay'));
+    caption.append(metadata, title, footer);
+    card.append(preview, caption);
+    grid.append(card);
+  });
+
+  if (!window.__jbMotionVisibilityListener) {
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        $$('.motion-preview video').forEach(v => v.pause());
+      }
+    });
+    window.__jbMotionVisibilityListener = true;
+  }
+}
 
 /* HERO — ROTACIÓN DE PUBLICACIONES */
 
@@ -1108,6 +1135,7 @@ function openWorkViewer(p, w, trigger) {
   slideIndex = 0;
 
   $$('.video-frame video').forEach(v => v.pause());
+  $$('.motion-preview video').forEach(v => v.pause());
 
   refreshWorkModal();
   renderSlide();
@@ -1540,3 +1568,318 @@ locateWebShots().finally(() => {
   renderProjects();
   fadeInSetup();
 });
+
+
+/* Interacciones tipográficas y control de fotos del HTML original */
+(() => {
+      'use strict';
+
+      const prefersLessMotion = matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      );
+
+      const symbols =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&+?✳/';
+
+      const pending = new WeakMap();
+
+      /* FOTO PRINCIPAL */
+
+      async function fixPortrait() {
+
+        const portrait = document.querySelector(
+          '.photo-main img'
+        );
+
+        if (!portrait) return;
+
+        if (
+          portrait.complete &&
+          portrait.naturalWidth > 0
+        ) return;
+
+        const candidates = [
+          'img/julian.jpeg.jpeg',
+          'img/julian.jpeg',
+          'img/julian.jpg',
+          'img/julian.png',
+          'img/julian.webp'
+        ];
+
+        for (const url of candidates) {
+
+          const valid = await new Promise(resolve => {
+
+            const image = new Image();
+
+            image.onload = () => resolve(true);
+            image.onerror = () => resolve(false);
+            image.src = url;
+
+          });
+
+          if (valid) {
+            portrait.src = url;
+            return;
+          }
+        }
+
+        portrait.hidden = true;
+
+        console.warn(
+          'No encontré la foto principal en img/.'
+        );
+      }
+
+      /* ANIMACIÓN DE CARACTERES */
+
+      function scramble(element, options = {}) {
+
+        if (
+          !element ||
+          prefersLessMotion.matches
+        ) return;
+
+        const {
+          duration = 750,
+          delay = 0
+        } = options;
+
+        const previous = pending.get(element);
+
+        if (previous) {
+          cancelAnimationFrame(previous);
+        }
+
+        const text =
+          element.dataset.scrambleTarget ||
+          element.textContent;
+
+        element.dataset.scrambleTarget = text;
+
+        const characters = [...text];
+
+        const minHeight =
+          element.getBoundingClientRect().height;
+
+        element.style.minHeight =
+          `${Math.ceil(minHeight)}px`;
+
+        element.classList.add('scramble-live');
+
+        const started = performance.now() + delay;
+        const id = Symbol();
+
+        element._scrambleId = id;
+
+        function draw(now) {
+
+          if (element._scrambleId !== id) return;
+
+          const progress = Math.min(
+            1,
+            Math.max(0, (now - started) / duration)
+          );
+
+          const settled = Math.floor(
+            characters.length * progress
+          );
+
+          element.textContent = characters.map(
+            (ch, index) => {
+
+              if (
+                /\s/.test(ch) ||
+                index < settled ||
+                progress === 1
+              ) {
+                return ch;
+              }
+
+              return symbols[
+                Math.floor(Math.random() * symbols.length)
+              ];
+            }
+          ).join('');
+
+          if (progress < 1) {
+
+            pending.set(
+              element,
+              requestAnimationFrame(draw)
+            );
+
+          } else {
+
+            element.textContent = text;
+            element.classList.remove('scramble-live');
+            element.style.minHeight = '';
+
+            pending.delete(element);
+          }
+        }
+
+        pending.set(
+          element,
+          requestAnimationFrame(draw)
+        );
+      }
+
+      /* ANIMACIÓN DEL TÍTULO */
+
+      function animateHeading(refreshText = false) {
+
+        const title = document.querySelector(
+          '.hero-heading'
+        );
+
+        if (
+          !title ||
+          prefersLessMotion.matches
+        ) return;
+
+        const lines = [
+          title.querySelector('[data-i18n="heroOne"]'),
+          title.querySelector('[data-i18n="heroTwo"]'),
+          title.querySelector('[data-i18n="heroThree"]')
+        ];
+
+        if (refreshText) {
+
+          lines.forEach(line => {
+
+            if (line) {
+              line.dataset.scrambleTarget =
+                line.textContent;
+            }
+          });
+        }
+
+        title.setAttribute(
+          'aria-label',
+          lines.map(
+            line =>
+              line?.dataset.scrambleTarget ||
+              line?.textContent ||
+              ''
+          ).join(' ')
+        );
+
+        lines.forEach((line, i) => {
+
+          scramble(line, {
+            duration: i === 2 ? 1000 : 750,
+            delay: i * 210
+          });
+        });
+      }
+
+      /* INTERACCIONES */
+
+      function init() {
+
+        fixPortrait();
+
+        const fonts =
+          document.fonts?.ready ||
+          Promise.resolve();
+
+        Promise.race([
+          fonts,
+          new Promise(
+            resolve => setTimeout(resolve, 450)
+          )
+        ]).then(() => animateHeading(true));
+
+        let lastHover = 0;
+
+        document.querySelector('.hero-heading')
+          ?.addEventListener('pointerenter', e => {
+
+            if (e.pointerType !== 'mouse') return;
+
+            if (Date.now() - lastHover < 2800) {
+              return;
+            }
+
+            lastHover = Date.now();
+
+            animateHeading();
+          });
+
+        document.querySelectorAll('.nav a')
+          .forEach(link => {
+
+            link.addEventListener(
+              'pointerenter',
+              e => {
+
+                if (e.pointerType === 'mouse') {
+                  scramble(link, {
+                    duration: 340
+                  });
+                }
+              }
+            );
+          });
+
+        document.getElementById('lang-btn')
+          ?.addEventListener('click', () => {
+
+            document.querySelectorAll('.nav a')
+              .forEach(link => {
+
+                link.dataset.scrambleTarget =
+                  link.textContent;
+              });
+
+            requestAnimationFrame(
+              () => animateHeading(true)
+            );
+          });
+      }
+
+      document.addEventListener(
+        'DOMContentLoaded',
+        init
+      );
+
+    })();
+
+
+/* Laboratorio visual: no publica piezas ficticias ni espacios vacíos. */
+const VISUAL_LAB_WORKS = [
+  // Ejemplo para cuando exista un archivo real en tu carpeta:
+  // { file: 'img/laboratorio/poster-01.jpg', title: 'Póster 01', kind: 'PÓSTER' },
+];
+
+function renderVisualLab() {
+  const lab = document.getElementById('laboratorio');
+  const grid = document.getElementById('lab-grid');
+  if (!lab || !grid) return;
+  grid.replaceChildren();
+  if (!VISUAL_LAB_WORKS.length) { lab.hidden = true; return; }
+  VISUAL_LAB_WORKS.forEach((item, i) => {
+    const card = node('figure', 'lab-card');
+    const anchor = node('a');
+    anchor.href = item.file;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    const img = node('img');
+    img.src = item.file;
+    img.loading = 'lazy';
+    img.alt = item.title;
+    img.onerror = () => {
+      card.remove();
+      if (!grid.children.length) lab.hidden = true;
+    };
+    anchor.append(img);
+    const caption = node('figcaption');
+    caption.append(node('strong', '', item.title),
+      node('small', '', item.kind || `EXP / ${i + 1}`));
+    card.append(anchor, caption);
+    grid.append(card);
+  });
+  lab.hidden = false;
+}
+renderVisualLab();
